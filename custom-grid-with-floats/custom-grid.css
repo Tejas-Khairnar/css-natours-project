@@ -1,0 +1,77 @@
+:root {
+  --grid-width: 1140px;
+  --gutter-vertical: 80px;
+  --gutter-horizontal: 60px;
+}
+
+.grid-test {
+  margin-top: 60px;
+}
+
+h1 {
+  width: 300px;
+  margin: 25px auto;
+}
+
+.row {
+  max-width: var(--grid-width); /* <=1140 */
+  background-color: #eee;
+  margin: 0 auto; /* center block elements in another block element */
+}
+/* apply margin except last child */
+.row:not(:last-child) {
+  margin-bottom: var(--gutter-vertical);
+}
+/* clearfix for float left of col */
+.row::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+/* select all class starting with col- */
+/* ^ => start, * => contains, $ => end */
+[class^='col-'] {
+  background-color: orangered;
+  float: left;
+}
+[class^='col-']:not(:last-child) {
+  margin-right: var(--gutter-horizontal);
+}
+
+/* col 1 of 2 */
+.col-1-of-2 {
+  width: calc((100% - var(--gutter-horizontal)) / 2);
+}
+
+/* col 1 of 3 */
+.col-1-of-3 {
+  width: calc((100% - 2 * var(--gutter-horizontal)) / 3);
+}
+
+/* col 1 of 4 */
+.col-1-of-4 {
+  width: calc((100% - 3 * var(--gutter-horizontal)) / 4);
+}
+
+/* col 2 of 3 */
+.col-2-of-3 {
+  width: calc(
+    2 * ((100% - 2 * var(--gutter-horizontal)) / 3) + var(--gutter-horizontal)
+  );
+}
+
+/* col 2 of 4 */
+.col-2-of-4 {
+  width: calc(
+    2 * ((100% - 3 * var(--gutter-horizontal)) / 4) + var(--gutter-horizontal)
+  );
+}
+
+/* col 3 of 4 */
+.col-3-of-4 {
+  width: calc(
+    3 * ((100% - 3 * var(--gutter-horizontal)) / 4) + 2 *
+      var(--gutter-horizontal)
+  );
+}
