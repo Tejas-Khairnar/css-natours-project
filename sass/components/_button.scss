@@ -1,0 +1,62 @@
+// this partial contains button as independant component for project
+
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s; // animation for hover, active state of <a>
+    position: relative; // reference for .btn::after
+    font-size: 1.6rem;
+  }
+
+  // on mouse hover on <a> moves up
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); // x y blur color
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6); // increase size of element on x, y
+      opacity: 0; // fading effect
+    }
+  }
+
+  // on mouse click on <a> to oriinal position, in relation with original link
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  // pseudo element defines certain parts of element
+  // add virtual element after element and then style it, new btn behind our btn, trated as its child
+  &::after {
+    content: ''; // important, otherwise not see this effects
+    display: inline-block; // important, makes exactly same as original
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem; // same as original/parent
+    // make it behind original btn
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; // animation for .btn:hover::after
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s; // name, duration, function, delay
+    animation-fill-mode: backwards; // apply 0% animation properties at first place
+  }
+}

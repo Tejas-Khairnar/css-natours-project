@@ -1,0 +1,37 @@
+// this partial contains header for project
+
+.header {
+  height: 95vh; // 95% of viewport height
+  // gradient direction, color1, color2, opacity
+  background-image: linear-gradient(
+      to right,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url('../img/hero.jpg');
+  background-size: cover; // fits image in its container
+  background-position: top; // preserve top of image, bottom can crop on resize screen
+  // top left xy, top right xy, bottom left xy, bottom right xy
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative; // reference/origin to logo-box position
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem; // only ctrl height of img width will be take care by browser
+  }
+
+  &__text-box {
+    // trick to align child box center to its parent box
+    position: absolute;
+    top: 40%; // 50% for center
+    left: 50%;
+    // in relation with element itself and not with parent
+    transform: translate(-50%, -50%);
+    text-align: center; // center inline elements like "<a> inside it"
+  }
+}

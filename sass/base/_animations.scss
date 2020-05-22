@@ -1,0 +1,53 @@
+// this partial contains animations for project
+
+@keyframes moveInLeft {
+  // beginning state of animation
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); // initially left side
+  }
+
+  // in between state of animation
+  80% {
+    transform: translateX(1rem); // inbetween goes to right side
+  }
+
+  // end state of animation
+  100% {
+    opacity: 1;
+    transform: translateX(0); // stays normal position
+  }
+}
+
+@keyframes moveInRight {
+  // beginning state of animation
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); // initially right side
+  }
+
+  // in between state of animation
+  80% {
+    transform: translateX(-1rem); // inbetween goes to left side
+  }
+
+  // end state of animation
+  100% {
+    opacity: 1;
+    transform: translateX(0); // stays normal position
+  }
+}
+
+@keyframes moveInBottom {
+  // beginning state of animation
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  // end state of animation
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
