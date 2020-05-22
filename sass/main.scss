@@ -4,6 +4,7 @@ $color-primary-dark: #28b485;
 
 $color-gray-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /*
     Initial reset
@@ -16,9 +17,8 @@ $color-white: #fff;
   box-sizing: inherit; /*inherite for all elements from body */
 }
 
-/* root font size for document to define rem units */
 html {
-  font-size: 62.5%; /* 10px/16px * 100 = 62.5% */
+  font-size: 62.5%; /* 10px/16px * 100 = 62.5% (to define rem units) */
 }
 
 /*
@@ -28,7 +28,6 @@ html {
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-  /* font-size: 16px; */
   line-height: 1.7; /* 1.7 times bigger than predefined line-height property */
   color: $color-gray-dark; /* overall text color for project */
   padding: 3rem; /* padding does not get inherited like font properties */
@@ -55,26 +54,26 @@ body {
     0 100%
   ); /* top left xy, top right xy, bottom left xy, bottom right xy*/
   position: relative; /* reference/origin to logo-box position */
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem; /* only ctrl height of img width will be take care by browser */
-}
+  &__logo {
+    height: 3.5rem; /* only ctrl height of img width will be take care by browser */
+  }
 
-.header__text-box {
-  /* trick to align child box center to its parent box*/
-  position: absolute;
-  top: 40%; /* 50% for center */
-  left: 50%;
-  /* in relation with element itself and not with parent */
-  transform: translate(-50%, -50%);
-  text-align: center; /* center inline elements like "<a> inside it"*/
+  &__text-box {
+    /* trick to align child box center to its parent box*/
+    position: absolute;
+    top: 40%; /* 50% for center */
+    left: 50%;
+    /* in relation with element itself and not with parent */
+    transform: translate(-50%, -50%);
+    text-align: center; /* center inline elements like "<a> inside it"*/
+  }
 }
 
 .heading-primary {
@@ -82,30 +81,30 @@ body {
   text-transform: uppercase;
   backface-visibility: hidden; /* hide backpart of element while transform */
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  display: block; /* span is inline element like text */
-  font-size: 6rem;
-  font-weight: 400; /* bydefault h1 has higher weight */
-  letter-spacing: 3rem;
-  /* to apply animation we defined in @keyframes */
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out; /* how animation proceeds */
+  &--main {
+    display: block; /* span is inline element like text */
+    font-size: 6rem;
+    font-weight: 400; /* bydefault h1 has higher weight */
+    letter-spacing: 3rem;
+    /* to apply animation we defined in @keyframes */
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; /* how animation proceeds */
 
-  /*
-  animation-delay: 3s; after this animation starts 
-  animation-iteration-count: 3;  number of repetation for animation
-  */
-}
+    /*
+    animation-delay: 3s; after this animation starts 
+    animation-iteration-count: 3;  number of repetation for animation
+    */
+  }
 
-.heading-primary--sub {
-  display: block; /* span is inline element like text */
-  font-size: 2rem;
-  font-weight: 700; /* bydefault h1 has higher weight */
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out; /* shorthand animation */
+  &--sub {
+    display: block; /* span is inline element like text */
+    font-size: 2rem;
+    font-weight: 700; /* bydefault h1 has higher weight */
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; /* shorthand animation */
+  }
 }
 
 @keyframes moveInLeft {
@@ -146,65 +145,65 @@ body {
   }
 }
 
-/* pseudo class defines state of element */
-/* initial state of <a> */
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  transition: all 0.2s; /* animation for hover, active state of <a> */
-  position: relative; /* reference for .btn::after */
-  font-size: 1.6rem;
-}
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all 0.2s; /* animation for hover, active state of <a> */
+    position: relative; /* reference for .btn::after */
+    font-size: 1.6rem;
+  }
 
-/* on mouse hover on <a> moves up */
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* x y blur color */
-}
+  /* on mouse hover on <a> moves up */
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* x y blur color */
 
-/* on mouse click on <a> to oriinal position, in relation with original link */
-.btn:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6); /* increase size of element on x, y */
+      opacity: 0; /* fading effect */
+    }
+  }
 
-.btn--white {
-  background-color: $color-white;
-  color: $color-gray-dark;
-}
+  /* on mouse click on <a> to oriinal position, in relation with original link */
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
 
-/* pseudo element defines certain parts of element */
-/* add virtual element after element and then style it, new btn behind our btn, trated as its child */
-.btn::after {
-  content: ''; /* important, otherwise not see this effects */
-  display: inline-block; /* important, makes exactly same as original */
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem; /* same as original/parent */
-  /* make it behind original btn */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s; /* animation for .btn:hover::after */
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
 
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6); /* increase size of element on x, y */
-  opacity: 0; /* fading effect */
-}
+    &::after {
+      background-color: $color-white;
+    }
+  }
 
-.btn--white::after {
-  background-color: $color-white;
-}
+  /* pseudo element defines certain parts of element */
+  /* add virtual element after element and then style it, new btn behind our btn, trated as its child */
+  &::after {
+    content: ''; /* important, otherwise not see this effects */
+    display: inline-block; /* important, makes exactly same as original */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem; /* same as original/parent */
+    /* make it behind original btn */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; /* animation for .btn:hover::after */
+  }
 
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.75s; /* name, duration, function, delay */
-  animation-fill-mode: backwards; /* apply 0% animation properties at first place */
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s; /* name, duration, function, delay */
+    animation-fill-mode: backwards; /* apply 0% animation properties at first place */
+  }
 }
 
 @keyframes moveInBottom {
