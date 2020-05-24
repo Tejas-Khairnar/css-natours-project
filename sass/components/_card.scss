@@ -1,0 +1,46 @@
+// this partial contains tours cards for project
+
+.card {
+  // always define on parent where ratation happen on its child
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative; // reference for sides
+  height: 50rem; // parent lost height because of child absolute positioning
+
+  &__side {
+    height: 50rem;
+    transition: all 0.8s;
+    position: absolute; // both front and back on each other
+    top: 0;
+    left: 0;
+    width: 100%; // takes full available width
+    backface-visibility: hidden; // hides back part of element when rotate
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+    }
+
+    &--back {
+      transform: rotateY(180deg); // back already rotate 180deg at beginning
+
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+    }
+  }
+
+  // only front side rotate 180deg when hover
+  &:hover &__side--front {
+    transform: rotateY(180deg);
+  }
+
+  // on hover back bring normal
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+}
