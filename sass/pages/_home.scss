@@ -1,7 +1,27 @@
-// this partial contains specific styles for home page of project . eg about page
+// this partial contains specific styles for home page of project . eg about, section page
 
 .section-about {
   background-color: $color-gray-light-1;
   padding: 25rem 0;
   margin-top: -20vh; // move up section to align with clip-path
+}
+
+.section-features {
+  padding: 20rem 0;
+  margin-top: -10rem; // move entire section up
+  // gradient for feature section
+  background-image: linear-gradient(
+      to right,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url('../../img/nat-4.jpg');
+  background-size: cover; // img cover all space in container
+  transform: skewY(-7deg); // -ve anti-clk wise, +ve clk wise
+
+  // select every direct child of .section-features
+  // here select row
+  & > * {
+    transform: skewY(7deg); // brings to normal position
+  }
 }
