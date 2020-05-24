@@ -12,6 +12,7 @@
   background-size: cover; // fits image in its container
   background-position: top; // preserve top of image, bottom can crop on resize screen
   // top left xy, top right xy, bottom left xy, bottom right xy
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative; // reference/origin to logo-box position
 
