@@ -16,6 +16,7 @@
     border-bottom: 3px solid transparent; // to reserv space for 3px for border
     width: 90%;
     display: block;
+    transition: all 0.3s; // animation for border color
 
     &:focus {
       outline: none; // blue outline browser default for input
@@ -39,12 +40,61 @@
     margin-left: 2rem;
     margin-top: 0.7rem;
     display: block;
-    transition: all 0.3s;
+    transition: all 0.3s; // animation for label
   }
 
   &__input:placeholder-shown + &__label {
     opacity: 0; // need this because we can't animate visibility
     visibility: hidden;
     transform: translateY(-4rem); // better label down movement effect
+  }
+
+  &__radio-group {
+    width: 49%;
+    display: inline-block;
+  }
+
+  &__radio-input {
+    display: none; // hide real radio button
+  }
+
+  &__radio-label {
+    font-size: $default-font-size;
+    cursor: pointer;
+    position: relative; // reference for radio button
+    padding-left: 4.5rem;
+  }
+
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: -0.4rem;
+
+    // inside dot when click on radio button
+    &::after {
+      content: '';
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0; // initially hide
+      transition: opacity 0.2s; // animation for opacity
+    }
+  }
+
+  // when radio checked select that radio-label's radio-button's after psuedo element
+  // as soon as select label then radio button get checked
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    opacity: 1;
   }
 }

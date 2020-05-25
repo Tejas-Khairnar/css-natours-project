@@ -1,6 +1,7 @@
 // this partial contains button as independant component for project
 
 .btn {
+  &, // button itself
   &:link,
   &:visited {
     text-transform: uppercase;
@@ -11,6 +12,10 @@
     transition: all 0.2s; // animation for hover, active state of <a>
     position: relative; // reference for .btn::after
     font-size: $default-font-size;
+
+    // change for booking form button
+    border: none;
+    cursor: pointer;
   }
 
   // on mouse hover on <a> moves up
@@ -25,7 +30,10 @@
   }
 
   // on mouse click on <a> to oriinal position, in relation with original link
-  &:active {
+  // focus for form button
+  &:active,
+  &:focus {
+    outline: none; // for form button
     transform: translateY(-0.1rem);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
   }
