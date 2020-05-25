@@ -1,0 +1,41 @@
+// this partial contains stories for story section
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: $color-white;
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem; // cause by transform -3rem
+  font-size: $default-font-size; // inherited by inner paragraph
+  transform: skewX(-12deg);
+
+  // 2 transform not work on 1 element
+  //   & > * {
+  //       transform: skewX(12deg);
+  //   }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    background-color: orangered;
+    float: left;
+    // define circle shape, only works when element is floated
+    // apply to look element as circle
+    shape-outside: circle(50% at 50% 50%); // radius at center of circle
+    -webkit-shape-outside: circle(50% at 50% 50%); // for safari
+    // apply to circle element itself
+    clip-path: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); // spacing between floated image and text
+  }
+
+  &__image {
+    height: 100%; // full width of parent container
+  }
+
+  &__text {
+    transform: skewX(12deg);
+  }
+}
