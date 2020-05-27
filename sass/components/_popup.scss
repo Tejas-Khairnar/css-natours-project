@@ -9,6 +9,11 @@
   background-color: rgba($color-black, 0.8);
   z-index: 9999; // on top of all other elements
 
+  // initially
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s; // animation for popup opacity
+
   &__content {
     // mixin to center block element
     @include absoluteCenter;
@@ -18,6 +23,11 @@
     border-radius: 3px;
     display: table; // to make its children of same height
     overflow: hidden; // fix border-radius for img
+
+    // initially
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: all 0.4s 0.2s; // animation for popup scale with delay
   }
 
   &__left {
@@ -54,5 +64,39 @@
     -moz-hyphens: auto; // firefox
     -ms-hyphens: auto; // IE / Edge
     -webkit-hyphens: auto; // chrome
+  }
+
+  // when click on link this target get set here (for same href and id)
+  // open state of popup
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // when popup is target then style for its child element
+  // open state of popup
+  &:target &__content {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  // removes above target
+  &__close {
+    &:link,
+    &:visited {
+      color: $color-gray-dark;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      font-size: 3rem; // increase size of X
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s; // animation for hover
+      line-height: 1; // predefine line height is bigger
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 }
