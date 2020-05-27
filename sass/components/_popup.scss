@@ -1,0 +1,58 @@
+// this partial contain custom pure popup for booking section
+
+.popup {
+  height: 100vh; // full screen
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-black, 0.8);
+  z-index: 9999; // on top of all other elements
+
+  &__content {
+    // mixin to center block element
+    @include absoluteCenter;
+    width: 75%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.1);
+    border-radius: 3px;
+    display: table; // to make its children of same height
+    overflow: hidden; // fix border-radius for img
+  }
+
+  &__left {
+    width: 33.33%;
+    // float: left; // sibling's height is not same
+    display: table-cell; // sibling's height is same
+  }
+
+  &__right {
+    width: 66.67%;
+    // float: left; // sibling's height is not same
+    display: table-cell; //sibling's height is same
+    vertical-align: middle; // vertically middle table cell
+    padding: 3rem 5rem;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    column-count: 2; // create columns
+    column-gap: 4rem; // spaces between columns
+    column-rule: 1px solid $color-gray-light-2; // same as inbetween border for column
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid $color-gray-light-2;
+
+    hyphens: auto; // add hyphenation to text which does not fit in 1 line
+    -moz-hyphens: auto; // firefox
+    -ms-hyphens: auto; // IE / Edge
+    -webkit-hyphens: auto; // chrome
+  }
+}
