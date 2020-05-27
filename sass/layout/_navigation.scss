@@ -16,6 +16,8 @@
     right: 6rem;
     z-index: 2000; // on top of background and nav
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    text-align: center; // horizontally center icon
+    cursor: pointer;
   }
 
   &__background {
@@ -105,5 +107,65 @@
   &__checkbox:checked ~ &__nav {
     opacity: 1;
     width: 100%;
+  }
+
+  // custom hamburger icon
+  &__icon {
+    position: relative; // reference for before, after
+    margin-top: 3.5rem;
+
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-gray-dark-3;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      transition: all 0.2s; // animation for hover
+    }
+
+    // above original span
+    &::before {
+      top: -0.8rem;
+    }
+
+    // below original span
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  // select icon when button get hover
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+
+  // select icon when button get hover
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  // to create hamburger to X shape when it get clicked
+  // whencheckbox selected then select button and its child icon element
+  &__checkbox:checked + &__button &__icon {
+    background-color: transparent; // original span color removed to make as invisible
+  }
+
+  // whencheckbox selected then select button and its child icon's before'
+  &__checkbox:checked + &__button &__icon::before {
+    top: 0; // bring to original position
+    transform: rotate(135deg); // (180 - 45)deg => +ve => rotate clk-wise
+  }
+  // whencheckbox selected then select button and its child icon's after
+  &__checkbox:checked + &__button &__icon::after {
+    top: 0; // bring to original position
+    transform: rotate(-135deg); // (180 - 45)deg => -ve => rotate anti-clk-wise
   }
 }
