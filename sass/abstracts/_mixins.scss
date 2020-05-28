@@ -7,3 +7,63 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* 
+ media query manager
+
+ 0px to 600px => phone
+ 600px to 900px => tablet portrait
+ 900px to 1200px => tablet landscape
+ 1200px to 1800px => desktop (here our normal styles get aplly)
+ 1800px and above => big desktop
+
+ $breakpoint => argument choices having following options
+ phone
+ tab-port
+ tab-land
+ big-desktop
+
+ rem are fails in some cases in some browsers so mostly em used in media query. 
+ and it also adapt with browser font-size set by user
+ 
+ 16px = 1em
+ 600px = 600 / 16 = 37.5em
+ 900px = 900 / 16 = 56.25em
+ 1200px = 1200 / 16 = 75em
+ 1800px = 1800 / 16 = 112.5em
+ */
+
+// generalize mixin for all
+@mixin respond($breakpoint) {
+  // check for phone
+  @if $breakpoint == phone {
+    // apply for screen ranges between 0px to 600px
+    @media (max-width: 37.5em) {
+      @content; // allow to pass block of code into this mixin from where it get called
+    }
+  }
+
+  // check for tablet portrait
+  @if $breakpoint == tab-port {
+    // apply for screen ranges between 600px to 900px
+    @media (max-width: 56.25em) {
+      @content; // allow to pass block of code into this mixin from where it get called
+    }
+  }
+
+  // check for tablet landscape
+  @if $breakpoint == tab-land {
+    // apply for screen ranges between 900px to 1200px
+    @media (max-width: 75em) {
+      @content; // allow to pass block of code into this mixin from where it get called
+    }
+  }
+
+  // check for big desktop
+  @if $breakpoint == big-desktop {
+    // apply for screen ranges above 1800px
+    @media (min-width: 112.5em) {
+      @content; // allow to pass block of code into this mixin from where it get called
+    }
+  }
+}
