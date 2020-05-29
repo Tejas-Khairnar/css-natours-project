@@ -6,6 +6,11 @@
   font-size: 1.4rem;
   color: $color-gray-light-1;
 
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
+
   &__logo-box {
     text-align: center; // center logo
     margin-bottom: 8rem;
@@ -20,6 +25,12 @@
     border-top: 1px solid $color-gray-dark;
     padding-top: 2rem;
     display: inline-block; // restrict width according to content width
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
   }
 
   &__list {
@@ -58,5 +69,11 @@
     padding-top: 2rem;
     width: 80%;
     float: right; // move right
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+    }
   }
 }

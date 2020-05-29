@@ -67,3 +67,8 @@
     }
   }
 }
+
+/*
+ desktop first approach => write media query from larger size to smaller size, from top to bottom, use max-width (isWidth <= max-width)
+ mobile first approach => write media query from smaller size to larger size, from top to bottom, use min-width (isWidth >= min-width)
+*/

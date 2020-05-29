@@ -18,6 +18,18 @@
     box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
     text-align: center; // horizontally center icon
     cursor: pointer;
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
+
+    // mixin for phone, <= 600px
+    @include respond(phone) {
+      top: 3rem;
+      right: 3rem;
+    }
   }
 
   &__background {
@@ -36,6 +48,18 @@
     // only works when position is set
     z-index: 1000; // on top of everything other
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); // animation when checkbox checked
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      top: 4.5rem;
+      right: 4.5rem;
+    }
+
+    // mixin for phone, <= 600px
+    @include respond(phone) {
+      top: 3.5rem;
+      right: 3.5rem;
+    }
   }
 
   &__nav {
