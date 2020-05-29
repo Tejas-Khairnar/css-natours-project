@@ -16,6 +16,18 @@
   //       transform: skewX(12deg);
   //   }
 
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  // mixin for phone, <= 600px
+  @include respond(phone) {
+    transform: skewX(0); // skew whole story back normal horizontaly
+  }
+
   &__shape {
     width: 15rem;
     height: 15rem;
@@ -31,6 +43,11 @@
     // spacing between floated image and text and skew back to normal
     transform: translateX(-3rem) skewX(12deg);
     position: relative; // reference for caption
+
+    // mixin for phone, <= 600px
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0); // skew story contents back normal horizontaly
+    }
   }
 
   &__image {
@@ -42,6 +59,11 @@
 
   &__text {
     transform: skewX(12deg); // skew back to normal
+
+    // mixin for phone, <= 600px
+    @include respond(phone) {
+      transform: skewX(0); // skew story text back normal horizontaly
+    }
   }
 
   &__caption {

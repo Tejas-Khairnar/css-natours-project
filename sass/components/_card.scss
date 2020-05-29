@@ -20,6 +20,7 @@
     box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
 
     &--front {
+      background-color: $color-white;
     }
 
     &--back {
@@ -187,5 +188,57 @@
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+  }
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    height: auto; // parent height same as child
+    border-radius: 3px; // for wholw card with front and back
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15); // for entire card
+
+    &__side {
+      height: auto; // child height same as parent
+      position: relative; // both front and back on same side
+      box-shadow: none; // only apply for front side
+
+      &--back {
+        transform: rotateY(0); // back side on front
+        clip-path: polygon(
+          0 15%,
+          100% 0,
+          100% 100%,
+          0 100%
+        ); // for back side which is at end of card
+      }
+    }
+
+    // front side stay same
+    &:hover &__side--front {
+      transform: rotateY(0); // front side not rotate
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    // back side styling
+    &__cta {
+      // replce center code with normal
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
   }
 }

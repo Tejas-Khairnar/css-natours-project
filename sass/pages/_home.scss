@@ -82,13 +82,44 @@
       transparent 50%
     ),
     url('../img/nat-10.jpg');
-  background-size: cover; // can use 100% same as cover
+  background-size: 100%; // can use 100% same as cover (100% => fit container in X direction)
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba($color-black, 0.2);
-  height: 50rem;
+
+  // mixin for tablet landscape, <= 1200px
+  @include respond(tab-land) {
+    background-image: linear-gradient(
+        105deg,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 65%,
+        transparent 65%
+      ),
+      url('../img/nat-10.jpg');
+    background-size: cover; // fit container in Y direction
+  }
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    background-image: linear-gradient(
+        to right,
+        rgba($color-white, 0.9) 0%,
+        rgba($color-white, 0.9) 100%
+      ),
+      url('../img/nat-10.jpg');
+  }
 
   &__form {
     width: 50%;
     padding: 6rem;
+
+    // mixin for tablet landscape, <= 1200px
+    @include respond(tab-land) {
+      width: 65%;
+    }
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      width: 100%;
+    }
   }
 }
