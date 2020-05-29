@@ -14,6 +14,11 @@
   &__logo-box {
     text-align: center; // center logo
     margin-bottom: 8rem;
+
+    // mixin for tablet portrait, <= 900px
+    @include respond(tab-port) {
+      margin-bottom: 6rem;
+    }
   }
 
   &__logo {

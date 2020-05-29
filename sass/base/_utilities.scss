@@ -6,6 +6,11 @@
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important;
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    margin-top: 5rem !important;
+  }
 }
 
 .u-margin-top-big {
@@ -18,6 +23,11 @@
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important;
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    margin-top: 3rem !important;
+  }
 }
 
 .u-margin-bottom-small {

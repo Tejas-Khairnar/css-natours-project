@@ -4,6 +4,11 @@
   background-color: $color-gray-light-1;
   padding: 25rem 0;
   margin-top: -20vh; // move up section to align with clip-path
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 20rem 0;
+  }
 }
 
 .section-features {
@@ -24,18 +29,33 @@
   & > * {
     transform: skewY(7deg); // brings to normal position
   }
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-tours {
   background-color: $color-gray-light-1;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem; // move entire section up
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 20rem 0 10rem 0;
+  }
 }
 
 .section-stories {
   padding: 15rem 0;
   // background-color: $color-gray-light-1; // no need because of bg-video
   position: relative; // reference for bg-video
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .section-book {
@@ -45,6 +65,11 @@
     $color-primary-light,
     $color-primary-dark
   );
+
+  // mixin for tablet portrait, <= 900px
+  @include respond(tab-port) {
+    padding: 10rem 0;
+  }
 }
 
 .book {
