@@ -33,16 +33,23 @@
     height: 15rem;
     background-color: orangered;
     float: left;
-    // define circle shape, only works when element is floated
-    // apply to look element as circle
-    shape-outside: circle(50% at 50% 50%); // radius at center of circle
-    -webkit-shape-outside: circle(50% at 50% 50%); // for safari
-    // apply to circle element itself
-    clip-path: circle(50% at 50% 50%);
-    -webkit-clip-path: circle(50% at 50% 50%);
     // spacing between floated image and text and skew back to normal
     transform: translateX(-3rem) skewX(12deg);
     position: relative; // reference for caption
+    overflow: hidden; // for older browser
+    border-radius: 50%; // tomake circle
+
+    // feature query for browser test
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      // apply to circle element itself
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      // define circle shape, only works when element is floated
+      // apply to look element as circle
+      -webkit-shape-outside: circle(50% at 50% 50%); // for safari
+      shape-outside: circle(50% at 50% 50%); // radius at center of circle
+      border-radius: none;
+    }
 
     // mixin for phone, <= 600px
     @include respond(phone) {
