@@ -191,7 +191,10 @@
   }
 
   // mixin for tablet portrait, <= 900px
-  @include respond(tab-port) {
+  // @include respond(tab-port) {
+
+  // apply for screen ranges between 600px to 900px OR touch screen device
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
     height: auto; // parent height same as child
     border-radius: 3px; // for wholw card with front and back
     background-color: $color-white;
